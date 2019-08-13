@@ -80,8 +80,8 @@ gulp.task('serve', ['clean'], function() {
 
   // 在js和scss任务的底部追加.pipe(browserSync.stream())，以保证能够在serve中被正常监听
   // watch的时候不要使用相对路径，不然无法监听新生成的文件
-  gulp.watch('src/scripts/**/*.js', ['js']);
   gulp.watch('src/scss/**/*.scss', ['scss']);
+  gulp.watch('src/js/**/*.js').on('change', browserSync.reload);
   gulp.watch('src/*.html').on('change', browserSync.reload);
 });
 ```
