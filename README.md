@@ -86,3 +86,12 @@ gulp.task('serve', ['clean'], function() {
 });
 ```
 虽然上面的js可以通过babel解析，但由于含有require语句，还是无法直接在页面中使用，因此直接监听了js文件夹
+
+## 复制文件到dist文件夹
+```js
+gulp.task('copy', ['scss'], function() {
+  gulp.src(['src/**/*', '!src/scss/**/*', '!src/maps/**/*'], { nodir: true})
+    .pipe(gulp.dest('dist'))
+})
+// nodir表示忽略空的目录，不然会生成空的scss和maps目录
+```
