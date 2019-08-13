@@ -64,3 +64,25 @@ gulp.task('js', function() {
 > 1%
 last 2 versions
 ```
+
+## 开启静态资源服务器browserSync，实现热启动
+```
+npm install browser-sync --save-dev
+```
+```js
+var browserSync = require('browser-sync').create()
+
+gulp.task('serve', ['clean'], function() {
+  browserSync.init({
+    server: 'src',
+    port: 8080
+  });
+
+  // 在js和scss任务的底部追加.pipe(browserSync.stream())，以保证能够在serve中被正常监听
+  // watch的时候不要使用相对路径，不然无法监听新生成的文件
+  gulp.watch('src/scripts/**/*.js', ['js']);
+  gulp.watch('src/scss/**/*.scss', ['scss']);
+  gulp.watch('src/*.html').on('change', browserSync.reload);
+});
+```
+虽然上面的js可以通过babel解析，但由于含有require语句，还是无法直接在页面中使用，因此直接监听了js文件夹
