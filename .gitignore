@@ -3,3 +3,4 @@ node_modules
 src/css
 src/maps
 src/scripts
+dist

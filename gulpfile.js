@@ -34,3 +34,9 @@ gulp.task('serve', ['scss'], function() {
   gulp.watch('src/js/**/*.js').on('change', browserSync.reload);
   gulp.watch('src/*.html').on('change', browserSync.reload);
 });
+
+// 复制文件到dist文件夹
+gulp.task('copy', ['scss'], function() {
+  gulp.src(['src/**/*', '!src/scss/**/*', '!src/maps/**/*'], { nodir: true})
+    .pipe(gulp.dest('dist'))
+})
