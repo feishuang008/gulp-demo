@@ -36,7 +36,13 @@ gulp.task('serve', ['scss'], function() {
 });
 
 // 复制文件到dist文件夹
-gulp.task('copy', ['scss'], function() {
+gulp.task('copy', ['scss', 'cleanDist'], function() {
   gulp.src(['src/**/*', '!src/scss/**/*', '!src/maps/**/*'], { nodir: true})
     .pipe(gulp.dest('dist'))
+})
+
+// 清空文件夹
+gulp.task('cleanDist', function() {
+  return gulp.src('dist', { read: false })
+    .pipe(plugins.clean())
 })
