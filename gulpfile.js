@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
+var browserSync = require('browser-sync').create();
 
 gulp.task('plugins', function() {
   console.log(plugins);
@@ -13,6 +14,7 @@ gulp.task('scss', function() {
     .pipe(plugins.autoprefixer())
     .pipe(plugins.sourcemaps.write('../maps'))
     .pipe(gulp.dest('src/css'))
+    .pipe(browserSync.stream())
 })
 
 // 清理
@@ -26,4 +28,17 @@ gulp.task('js', function() {
   return gulp.src('src/scripts/**/*.js')
     .pipe(plugins.babel())
     .pipe(gulp.dest('src/js'))
+    .pipe(browserSync.stream())
+});
+
+// 开启静态资源服务器browserSync
+gulp.task('serve', ['scss'], function() {
+  browserSync.init({
+    server: 'src',
+    port: 8080
+  });
+
+  gulp.watch('src/scss/**/*.scss', ['scss']);
+  gulp.watch('src/js/**/*.js').on('change', browserSync.reload);
+  gulp.watch('src/*.html').on('change', browserSync.reload);
 });
