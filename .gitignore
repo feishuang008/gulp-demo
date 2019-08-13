@@ -1,6 +1,5 @@
-.DS_Store
 node_modules
+.DS_Store
+dist
 src/css
 src/maps
-src/scripts
-dist

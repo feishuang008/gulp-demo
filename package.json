@@ -1,5 +1,5 @@
 {
-  "name": "gulpDemo",
+  "name": "manage",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,14 +10,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "babel-polyfill": "^6.26.0",
     "browser-sync": "^2.26.7",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^6.1.0",
-    "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.4.0",
+    "gulp-content-includer": "^0.0.7",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-load-plugins": "^2.0.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "node-sass": "^4.12.0"
