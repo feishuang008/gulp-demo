@@ -17,6 +17,13 @@ gulp.task('scss', function() {
 
 // 清理
 gulp.task('clean', function() {
-  return gulp.src(['src/css', 'src/maps'], { read: false })
+  return gulp.src(['src/css', 'src/maps', 'src/js'], { read: false })
     .pipe(plugins.clean())
+});
+
+// 使用Babel
+gulp.task('js', function() {
+  return gulp.src('src/scripts/**/*.js')
+    .pipe(plugins.babel())
+    .pipe(gulp.dest('src/js'))
 });

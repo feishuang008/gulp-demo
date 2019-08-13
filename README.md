@@ -37,3 +37,30 @@ gulp.task('clean', function() {
 });
 ```
 
+## 使用Babel
+```
+npm install gulp-babel @babel/core
+```
+```js
+gulp.task('js', function() {
+  return gulp.src('src/scripts/**/*.js')
+    .pipe(plugins.babel())
+    .pipe(gulp.dest('src/js'))
+});
+```
+新建.babelrc文件，配置babel的相关信息
+```
+{
+  presets: [
+    ['@babel/preset-env', {
+      useBuiltIns: 'usage',
+      corejs: 2
+    }]
+  ]
+}
+```
+新建.browserslistrc文件，用于配置浏览器的兼容性，此文件对autoprefixer同样有用
+```
+> 1%
+last 2 versions
+```
