@@ -25,3 +25,15 @@ gulp.task('scss', function() {
     .pipe(gulp.dest('src/css'))
 })
 ```
+
+## 清理文件夹
+```bash
+npm install gulp-clean --save-dev
+```
+```
+gulp.task('clean', function() {
+  return gulp.src(['src/css', 'src/maps'], { read: false })
+    .pipe(plugins.clean())
+});
+```
+
