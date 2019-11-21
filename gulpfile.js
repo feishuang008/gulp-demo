@@ -43,6 +43,6 @@ gulp.task('copy', ['scss', 'cleanDist'], function() {
 
 // 清空文件夹
 gulp.task('cleanDist', function() {
-  return gulp.src('dist', { read: false })
+  return gulp.src('dist', { read: false, allowEmpty: true })  // allowEmpty: true可以解决dist目录不存在的情况下报错的问题
     .pipe(plugins.clean())
 })
